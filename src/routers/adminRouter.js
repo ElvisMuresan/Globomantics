@@ -6,7 +6,6 @@ const sessions = require("../data/sessions.json");
 const adminRouter = express.Router();
 
 adminRouter.route("/").get((req, res) => {
-  debug("/admin has been hit");
   const url =
     "mongodb+srv://dbUser:Barcelona3!%40!@globomantics.f60mfj4.mongodb.net/?retryWrites=true&w=majority";
   const dbName = "globomantics";
@@ -21,6 +20,7 @@ adminRouter.route("/").get((req, res) => {
     } catch (error) {
       debug(error.stack);
     }
+    client.close();
   })();
 });
 module.exports = adminRouter;
